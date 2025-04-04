@@ -4,7 +4,7 @@ package sudoku
 fun main(){
     // vaild and comleted sudoku board
 
-  /*  val boardVaild:Array<CharArray> = arrayOf(
+   val boardVaild:Array<CharArray> = arrayOf(
     charArrayOf('5', '3', '4', '6', '7', '8', '9', '1', '2'),
     charArrayOf('6', '7', '2', '1', '9', '5', '3', '4', '8'),
     charArrayOf('1', '9', '8', '3', '4', '2', '5', '6', '7'),
@@ -115,7 +115,7 @@ val dynamicInvaildBoard :Array<CharArray> = arrayOf(
 )
   println( checkVailidationCases(dynamicInvaildBoard, isVaildSudoku(dynamicInvaildBoard),false))
 
-*/
+
 
     // vaild empty sudoku board
     val boardVaildzero:Array<CharArray>  = arrayOf(
