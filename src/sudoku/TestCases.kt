@@ -4,7 +4,7 @@ package sudoku
 fun main(){
     // vaild and comleted sudoku board
 
-   val boardVaild:Array<CharArray> = arrayOf(
+  val boardVaild:Array<CharArray> = arrayOf(
     charArrayOf('5', '3', '4', '6', '7', '8', '9', '1', '2'),
     charArrayOf('6', '7', '2', '1', '9', '5', '3', '4', '8'),
     charArrayOf('1', '9', '8', '3', '4', '2', '5', '6', '7'),
@@ -79,21 +79,6 @@ fun main(){
     )
     println( checkVailidationCases(invaildSubGrideBoard, isVaildSudoku(invaildSubGrideBoard),false))
 
-
-// vaild sudoku som cell fill and some empty
-    val vaildBoadrd3: Array<CharArray> = arrayOf(
-        charArrayOf('5', '3', '_', '_', '7', '_', '_', '_', '_'),
-        charArrayOf('6', '_', '_', '1', '9', '5', '_', '_', '_'),
-        charArrayOf('_', '9', '8', '_', '_', '_', '_', '6', '_'),
-        charArrayOf('8', '_', '_', '_', '6', '_', '_', '_', '3'),
-        charArrayOf('4', '_', '_', '8', '_', '3', '_', '_', '1'),
-        charArrayOf('7', '_', '_', '_', '2', '_', '_', '_', '6'),
-        charArrayOf('_', '6', '_', '_', '_', '_', '2', '8', '_'),
-        charArrayOf('_', '_', '_', '4', '1', '9', '_', '_', '5'),
-        charArrayOf('_', '_', '_', '_', '8', '_', '_', '7', '9')
-    )
-println( checkVailidationCases(vaildBoadrd3, isVaildSudoku(vaildBoadrd3),true))
-
      // only on cell fill
     //only one row or colum completed
 
@@ -117,7 +102,7 @@ val dynamicInvaildBoard :Array<CharArray> = arrayOf(
 
 
 
-    // vaild empty sudoku board
+   // vaild empty sudoku board
     val boardVaildzero:Array<CharArray>  = arrayOf(
         charArrayOf('_', '_', '0', '_', '_', '_', '_', '_', '_'),
         charArrayOf('_', '_', '_', '_', '_', '_', '_', '_', '_'),

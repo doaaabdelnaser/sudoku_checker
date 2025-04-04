@@ -5,56 +5,55 @@ package sudoku
 fun main() {
 
 }
-fun isVaildSudoku(board:Array<CharArray>):Boolean{
 
-    fun isVaild(sudokuBoard:List<Char>):Boolean{
+fun isVaildSudoku(board: Array<CharArray>): Boolean {
 
-
-         val items=sudokuBoard.filter { it!='_' }
-
-        for (i in items){
-            if(items.indexOf(i)!=0)
-                return true
-            else
-                return false
-        }
+    fun isVaild(sudokuBoard: List<Char>): Boolean {
+        val items = sudokuBoard.filter { it != '_' }
+        /* for (i in items){
+             if(i!='0')
+                 return true
+             else
+                 return false
+         }*/
+        if (items.any { it == '0' }) return false
         // check duplicated
-       //return items.filterIndexed { index, c -> items.indexOf(c) != index }.isEmpty()
-         return items.none { c -> items.indexOf(c) != items.lastIndexOf(c)  }
+        return items.size == items.toSet().size
+        //   return items.none { c -> items.indexOf(c) != items.lastIndexOf(c)  }
 
     }
-  /*  for (row  in board){
-        //val rowList= row.toList()
-        if (!isVaild(row.toList()))
-            return false
+    /*  for (row  in board){
+          //val rowList= row.toList()
+          if (!isVaild(row.toList()))
+              return false
 
+      }
+
+      for (column in 0 until board.size-1){
+          val col=List(board.size){it->board[it][column]}
+          if (!isVaild(col))return false
+      }
+  */
+
+    for (row in 0 until board.size - 1) {
+        if (!isVaild(board[row].toList())) return false
+        val col = List(board.size) {board[it][row]}
+        if (!isVaild(col)) return false
     }
 
-    for (column in 0 until board.size-1){
-        val col=List(board.size){it->board[it][column]}
-        if (!isVaild(col))return false
-    }
-*/
 
-    for (row in 0 until board.size-1){
-        if ( !isVaild(board[row].toList())) return false
-        val col=List(board.size){it->board[it][row]}
-        if (!isVaild(col))return false
-    }
+    val subgrideSize = Math.sqrt(board.size.toDouble()).toInt()
+// for loop itrated number of row and colum
 
-
-     val subgrideSize=Math.sqrt(board.size.toDouble()).toInt()
-
-    for (rowGrid in 0 until subgrideSize) {
-        for (columGrid in 0 until subgrideSize) {
-            val subgrid = mutableListOf<Char>()
-
-            for (row in rowGrid * subgrideSize until (rowGrid + 1) * subgrideSize) {
-                for (col in columGrid * subgrideSize until (columGrid + 1) * subgrideSize) {
-                    subgrid.add(board[row][col])
+    for (rowGride in 0 until board.size step subgrideSize ) {
+        for (columGrid in 0 until board.size step subgrideSize) {
+            val gridList = mutableListOf<Char>()
+            for (row in rowGride until subgrideSize) {
+                for (col in columGrid until subgrideSize) {
+                    gridList.add(board[row][col])
                 }
             }
-            if (!isVaild(subgrid))return false
+            if (!isVaild(gridList)) return false
 
         }
     }
@@ -63,9 +62,12 @@ fun isVaildSudoku(board:Array<CharArray>):Boolean{
 }
 
 /* for (rowGride in 0 until subgrideSize){
-      for (colmGride in 0 until subgrideSize){
-          val box = listOf(
-              board[rowGride * subgrideSize][colmGride * subgrideSize], board[rowGride * subgrideSize][colmGride * subgrideSize + 1], board[rowGride * subgrideSize][colmGride *subgrideSize+ 2],
-              board[rowGride * subgrideSize + 1][colmGride * subgrideSize], board[rowGride * subgrideSize + 1][colmGride * subgrideSize + 1], board[rowGride * subgrideSize + 1][colmGride * subgrideSize + 2],
-              board[rowGride * subgrideSize + 2][colmGride * subgrideSize], board[rowGride * subgrideSize + 2][colmGride * subgrideSize + 1], board[rowGride * subgrideSize+ 2][colmGride * subgrideSize + 2]
-          )*/
+        for (colmGride in 0 until subgrideSize){
+            val box = listOf(
+                board[rowGride * subgrideSize][colmGride * subgrideSize], board[rowGride * subgrideSize][colmGride * subgrideSize + 1], board[rowGride * subgrideSize][colmGride *subgrideSize+ 2],
+                board[rowGride * subgrideSize + 1][colmGride * subgrideSize], board[rowGride * subgrideSize + 1][colmGride * subgrideSize + 1], board[rowGride * subgrideSize + 1][colmGride * subgrideSize + 2],
+                board[rowGride * subgrideSize + 2][colmGride * subgrideSize], board[rowGride * subgrideSize + 2][colmGride * subgrideSize + 1], board[rowGride * subgrideSize+ 2][colmGride * subgrideSize + 2]
+            )
+            if (!isVaild(box)) return false
+
+        }}*/

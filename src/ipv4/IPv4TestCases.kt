@@ -60,7 +60,7 @@ fun main(){
 
 fun  checkValidation(input :String,resualt:Boolean,excpectedResult:Boolean):String{
     return if (resualt == excpectedResult)
-        "Test Success and sudoku resualt is $resualt"
+        "Test Success and sudoku result is $resualt"
           else
               "Test Failed"
 }
